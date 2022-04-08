@@ -3,7 +3,7 @@
     import * as dotenv from "dotenv";
     
     import AppApp from "./app/app";
-    import MiddleWare from "./middleware/MiddleWare";
+    import MiddleWare from "./middleware/Middleware";
     
     import { Routes } from "./routes";
     
