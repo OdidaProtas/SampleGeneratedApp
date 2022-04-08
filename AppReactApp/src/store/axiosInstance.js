@@ -1,7 +1,7 @@
 import axios from "axios";
 // const endpoint = "http://localhost:7072";
 
-const endpoint = "http://pro-gen-sample-api.herokuapp.com/"
+const endpoint = "https://pro-gen-sample-api.herokuapp.com/"
 
 
 const axiosInstance = axios.create({
