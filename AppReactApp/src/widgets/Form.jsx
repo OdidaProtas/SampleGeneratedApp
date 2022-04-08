@@ -42,16 +42,14 @@ export function Form({ name, relationship, dialog, rID, next }) {
         e.preventDefault()
         setLoading(true)
         const promise = axiosInstance.post(`/${name.toLowerCase()}`, { ...state, [relationship]: rID })
-        const [{ data }, err] = await useTryCatch(promise);
+        const [res, err] = await useTryCatch(promise);
         if (err) {
             setError(err)
             setLoading(false)
             return;
         }
         setSuccess(true)
-        localStorage.setItem("access_token", data)
         dispatch({ type: "ADD_ENTITY", payload: { ...res.data, isNew: true }, context: `${relationship || name}List` });
-        dispatch({ type: "ADD_ENTITIES", payload: true, context: "isLoggedIn" });
         setLoading(false);
         if (redirect || next) {
             setTimeout(() => {
@@ -204,11 +202,10 @@ const styles = {
     },
     header: {
         bgcolor: "lightgray",
-        mt: 51
+        mt: 1,
         textAlign: "center",
         borderRadius: "4px",
         minHeight: 80,
-        textAlign: "center",
     },
     emptyDesc: {
         minHeight: "30vh",

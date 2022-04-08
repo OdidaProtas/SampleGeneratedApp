@@ -5,27 +5,31 @@ import { getEntities } from "../data/data"
 import Link from "@mui/material/Link"
 import Typography from "@mui/material/Typography"
 import { useHistory } from "react-router-dom"
+import Toolbar from "@mui/material/Toolbar"
 export function Home() {
     const { push } = useHistory()
     return (
         <Container>
+            <Toolbar />
             <Box sx={styles["header"]} >
                 <Box>
-                    <img className={"App-logo"} src={logo} alt="logo" />
+                    <img className={"App-logo"} height="108" src={logo} alt="logo" />
                     <br />
-                    <Typography variant="h6" >App Project</Typography>
+                    <Typography variant="h6" >Hello, world!</Typography>
+                    <Typography sx={{ mt: 2 }} variant="h3" >ProBlog Project</Typography>
                 </Box>
             </Box>
-            <Typography variant="h5" sx={{ my: 2 }} >Available Links</Typography>
+            <Typography variant="h5" sx={{ my: 2 }} >Models</Typography>
             <Box sx={styles["body"]} >
                 {getEntities().map(e => e.EntityName).map((e, i) => {
                     return (
-                        <Box key={i} sx={{mt:2}} >
+                        <Box key={i} >
                             <Link onClick={() => push(`/${e}`)} sx={styles["link"]} >{e}</Link>
                         </Box>
                     )
                 })}
             </Box>
+
         </Container>
     )
 
